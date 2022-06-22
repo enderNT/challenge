@@ -5,7 +5,7 @@ const FormName = ({ data, setData }) => {
 
     const {
         dialog, handleName, handleSubmit,
-        name, errors
+        name
     } = useFormName(data, setData)
 
 
@@ -35,7 +35,6 @@ const FormName = ({ data, setData }) => {
                     onChange={handleName} />
                 {
                     Object.values(name).some(campo => !campo)
-                    && errors.some(e => e)
                     ? (
                         <input
                             disabled
