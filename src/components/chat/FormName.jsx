@@ -1,29 +1,12 @@
 import React from 'react'
+import useFormName from '../../hooks/useFormName'
 
 const FormName = ({ data, setData }) => {
 
-    const [name, setName] = useState({
-        nombre: '',
-        segundoNombre: '',
-        apellidoPaterno: '',
-        apellidoMaterno: ''
-    })
-
-    const handleName = (event) => {
-        setName({
-            ...name,
-            [event.target.name]: event.target.value
-        })
-    }
-
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        setData({
-            ...data,
-            name
-        })
-    }
-
+    const {
+        dialog, handleName, handleSubmit,
+        name, errors
+    } = useFormName(data, setData)
 
 
     return (
@@ -31,6 +14,7 @@ const FormName = ({ data, setData }) => {
             <div>
                 <img src="www.google.com" alt="profile-pic" />
             </div>
+
             <form onSubmit={handleSubmit}>
                 <h3>¿Cual es tu nombre?</h3>
                 <input
@@ -49,9 +33,28 @@ const FormName = ({ data, setData }) => {
                     name='apellidoMaterno'
                     type="text" placeholder='Apellido materno'
                     onChange={handleName} />
-                <input type="submit" />
+                {
+                    Object.values(name).some(campo => !campo)
+                    && errors.some(e => e)
+                    ? (
+                        <input
+                            disabled
+                            type="submit" value='Continuar'
+                        />
+                    ) : (
+                        <input
+                            type="submit" value='Continuar'
+                        />
+                    )
+                }
             </form>
-            <p>{`${name.nombre (name.segundoNombre && name.segundoNombre) (name.apellidoPaterno)}`}</p>
+            {
+                Object.values(data.name).every(campo => campo) && (
+                    <div>
+                        <p>{ dialog.join(' ') }</p>
+                    </div>
+                )
+            }
         </div>
     )
 }

@@ -6,28 +6,22 @@ import FormContact from './FormContact'
 const Chat = () => {
 
     const [data, setData] = useState({
-        name: null,
-        birthday: null,
-        contact: null
+        name: {
+            nombre: '',
+            segundoNombre: '',
+            apellidoPaterno: '',
+            apellidoMaterno: ''
+        },
+        birthday: {
+            dia: 0,
+            mes: '',
+            anio: 0
+        },
+        contact: {
+            correo: '',
+            celular: 0,
+        }
     })
-
-    // const [birthday, setBirthday] = useState({
-    //     dia: '',
-    //     mes: '',
-    //     anio: ''
-    // })
-
-    // const [contact, setContact] = useState({
-    //     correo: '',
-    //     celular: ''
-    // })
-
-    const [button, setButton] = useState(false)
-    const [show, setShow] = false
-
-    const { nombre, segundoNombre, apellidoPaterno, apellidoMaterno } = data.name
-    const { dia, mes, anio } = data.birthday
-    const { correo, celular } = data.contact
 
 
     return (
@@ -45,28 +39,43 @@ const Chat = () => {
 
             <section className='chatBody'>
                 {
-                    Object.values(data.name).some(c => !c) && (
-                        <FormName
+                    <FormName
+                        setData={setData}
+                        data={data}
+                    />
+                }
+                {
+                    Object.values(data.name).every(campo => campo) && (
+                        <FormBirthday
                             setData={setData}
                             data={data}
                         />
                     )
                 }
-                {<FormBirthday
-                />}
-                {<FormContact
-                />}
+                {
+                    Object.values(data.name).every(campo => campo)
+                    && Object.values(data.birthday).every(campo => campo) && (
+                        <FormContact
+                            setData={setData}
+                            data={data}
+                        />
+                    )
+                }
             </section>
 
             <footer className='chatFooter'>
                 {
-                    !button ?
-                    (
-                        <span></span>
-                    ) : (
-                        <div>
-                            <button>Continuar</button>
-                        </div>
+                    Object.values(data.name)
+                    .concat(Object.values(data.birthday))
+                    .concat(Object.values(data.contact)).every(campo => campo) && (
+                        <>
+                            <div>
+                                <p>Si tus datos son correctos continuemos por favor</p>
+                            </div>
+                            <div>
+                                <button>Iniciar</button>
+                            </div>
+                        </>
                     )
                 }
             </footer>
