@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import FormName from './FormName'
 import FormBirthday from './FormBirthday'
 import FormContact from './FormContact'
+import '../../styles/chat.css'
 
 const Chat = () => {
 

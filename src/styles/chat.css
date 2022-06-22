@@ -1,0 +1,9 @@
+.chat {
+    width: 50%;
+    border: 1px solid black;
+    margin: 35% auto;
+}
+
+.chatHeader {
+    background-color: pink;
+}
