@@ -7,24 +7,6 @@ import useChat from '../../hooks/useChat'
 
 const Chat = () => {
 
-    // const [data, setData] = useState({
-    //     name: {
-    //         nombre: '',
-    //         segundoNombre: '',
-    //         apellidoPaterno: '',
-    //         apellidoMaterno: ''
-    //     },
-    //     birthday: {
-    //         dia: 0,
-    //         mes: '',
-    //         anio: 0
-    //     },
-    //     contact: {
-    //         correo: '',
-    //         celular: 0,
-    //     }
-    // })
-
     const {
         data, setData, submitData, response
     } = useChat()
@@ -81,7 +63,13 @@ const Chat = () => {
                                 <p>Si tus datos son correctos continuemos por favor</p>
                             </div>
                             <div className='buttonStart__container'>
-                                <button onClick={() => submitData(data)}>Iniciar</button>
+                                {
+                                    Object.values(response).length <= 0 && (
+                                        <button onClick={async () => await submitData(data, 4001)}>
+                                            Iniciar
+                                        </button>
+                                    )
+                                }
                             </div>
                             {
                                 Object.values(response).length > 0 && (

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import axios from 'axios'
 
 const useChat = () => {
     const [data, setData] = useState({
@@ -23,21 +24,18 @@ const useChat = () => {
 
     const submitData = async (Data, port) => {
         const { name, birthday, contact } = Data
-        const res = await fetch(`https://localhost:${port || 4001}`,
-        {
-            method: 'POST',
-            body: JSON.stringify({
-                nombre: name.nombre, segundoNombre: name.segundoNombre,
-                apellidoPaterno: name.apellidoPaterno, apellidoMaterno: name.apellidoMaterno,
-                fechaDeNacimiento: Object.values(birthday).join(' '),
-                email: contact.correo, telefono: contact.celular
-            }),
-            headers: {
-                'Content-type': 'aplicattion/json'
-            }
-        })
-        const result = await res.json()
-        setResponse(result)
+        try {
+        const res = await axios.post('http://localhost:4001/', {
+                    nombre: name.nombre, segundoNombre: name.segundoNombre,
+                    apellidoPaterno: name.apellidoPaterno, apellidoMaterno: name.apellidoMaterno,
+                    fechaDeNacimiento: Object.values(birthday).join(' '),
+                    email: contact.correo, telefono: contact.celular
+                })
+        setResponse(res.data)
+        console.log(res.data)
+        } catch (error) {
+            console.error(error)
+        }
     }
 
 
