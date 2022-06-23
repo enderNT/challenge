@@ -10,7 +10,7 @@ const useFormContact = (data, handleData) => {
         if (event.target.name === 'celular') {
             setContact({
                 ...contact,
-                [event.target.name]: parseInt(event.target.value).trim()
+                [event.target.name]: parseInt(event.target.value)
             })
             return 
         }
