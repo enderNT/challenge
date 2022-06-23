@@ -31,8 +31,7 @@ app.post('/', async (req, res) => {
             return res.status(500).json({ error: 'algo salio mal' })
         }
         return res.status(201).json({
-            nombre, segundoNombre, apellidoPaterno,
-            apellidoMaterno, fechaDeNacimiento, email,
+            nombreCompleto: `${nombre} ${segundoNombre} ${apellidoPaterno} ${apellidoMaterno}`, fechaDeNacimiento, email,
             telefono
         })
     })
