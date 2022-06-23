@@ -6,7 +6,7 @@ const FormBirthday = ({ data, setData }) => {
 
     const {
         birthday, dialog, handleBirthday,
-        handleSubmit, enumMes, currentYear
+        handleSubmit, enumMes
     } = useFormBirthday(data, setData)
 
     return (
@@ -29,7 +29,11 @@ const FormBirthday = ({ data, setData }) => {
                     type="text" placeholder='Año'
                     onChange={handleBirthday} />
                 {
-                    Object.values(birthday).some(campo => !campo) ? (
+                    Object.values(birthday).some(campo => !campo)
+                    || birthday.dia <= 0 || birthday.dia >= 31
+                    || !enumMes(birthday.mes)
+                    || birthday.anio <= 1919 || birthday.anio >= 2005
+                    ? (
                         <input
                             disabled
                             type="submit" value='Continuar'
@@ -37,7 +41,6 @@ const FormBirthday = ({ data, setData }) => {
                     ) : (
                         <input
                             type="submit" value='Continuar'
-                            disabled
                         />
                     )
                 }

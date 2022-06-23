@@ -2,8 +2,6 @@ import { useState } from "react"
 
 const useFormBirthday = (data, handleData) => {
 
-    const currentYear = new Date().getFullYear()
-
     const [birthday, setBirthday] = useState({
         dia: 0,
         mes: '',
@@ -18,7 +16,7 @@ const useFormBirthday = (data, handleData) => {
                 ...birthday,
                 [event.target.name]: parseInt(event.target.value)
             })
-            return   
+            return
         }
         setBirthday({
             ...birthday,
@@ -58,8 +56,6 @@ const useFormBirthday = (data, handleData) => {
         }
     }
 
-    // console.log(Object.values(birthday).some(campo => !campo))
-
     const handleSubmit = (event) => {
         event.preventDefault()
         setDialog(Object.values(birthday))
@@ -71,7 +67,7 @@ const useFormBirthday = (data, handleData) => {
 
     return {
         birthday, dialog, handleBirthday,
-        handleSubmit, enumMes, currentYear
+        handleSubmit, enumMes
     }
 }
 
