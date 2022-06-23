@@ -20,7 +20,7 @@ const useFormBirthday = (data, handleData) => {
         }
         setBirthday({
             ...birthday,
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value.trim()
         })
         return
     }

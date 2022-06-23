@@ -15,7 +15,7 @@ const useFormName = (data, handleData) => {
     const handleName = (event) => {
         setName({
             ...name,
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value.trim()
         })
     }
 

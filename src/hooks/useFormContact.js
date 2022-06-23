@@ -10,13 +10,15 @@ const useFormContact = (data, handleData) => {
         if (event.target.name === 'celular') {
             setContact({
                 ...contact,
-                [event.target.name]: parseInt(event.target.value)
-            })    
+                [event.target.name]: parseInt(event.target.value).trim()
+            })
+            return 
         }
         setContact({
             ...contact,
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value.trim()
         })
+        return
     }
 
     const validateEmail = (email) => {

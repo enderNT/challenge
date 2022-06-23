@@ -15,7 +15,8 @@ const FormBirthday = ({ data, setData }) => {
                 <img src="www.google.com" alt="profile-pic" />
             </div>
             <form onSubmit={handleSubmit}>
-                <h3>¿Cual es tu fecha de nacimiento?</h3>
+                <h3>¿Cual es tu fecha de nacimiento?</h3>ls
+                
                 <input
                     name='dia'
                     type="number" placeholder='Dia'
