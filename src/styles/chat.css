@@ -1,9 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+input {
+    padding: 8px;
+}
+
 .chat {
-    width: 50%;
+    width: 40%;
     border: 1px solid black;
-    margin: 35% auto;
+    margin: 5% auto;
 }
 
 .chatHeader {
-    background-color: pink;
+    background-color: rgb(224, 93, 165);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    padding: 15px;
+}
+
+.chatBody {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(238, 238, 238);
+    justify-content: end;
+    padding: 13% 15px;
+}
+
+.chatFooter {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(238, 238, 238);
+    justify-content: end;
+    padding: 1% 15px;
+}
+
+.chatFooter > .submitData > .confirmation {
+    background-color: rgb(214, 214, 214);
+    text-align: center;
+    padding: 15px;
+    width: 80%;
+    margin-left: 12%;
+}
+
+.buttonStart__container {
+    margin-top: 10%;
+}
+
+.buttonStart__container > button {
+    width: 80%;
+    padding: 15px;
+    margin-left: 12%;
+    margin-bottom: 12%;
+    color: white;
+    font-weight: 500;
+    background-color: rgb(241, 46, 79);
+    border: none;
 }

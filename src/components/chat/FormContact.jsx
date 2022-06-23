@@ -1,15 +1,16 @@
 import React from 'react'
 import useFormContact from '../../hooks/useFormContact'
+import '../../styles/formContact.css'
 
 const FormContact = ({ data, setData }) => {
 
-     const {
-     handleSubmit, handleContact, dialog,
-     contact
-     } = useFormContact(data, setData)
+    const {
+        handleSubmit, handleContact,
+        contact, validateEmail, validatePhone
+    } = useFormContact(data, setData)
 
     return (
-        <div>
+        <div className='formContact'>
             <div>
                 <img src="www.google.com" alt="profile-pic" />
             </div>
@@ -24,7 +25,10 @@ const FormContact = ({ data, setData }) => {
                     type="number" placeholder='Telefono celular'
                     onChange={handleContact} />
                 {
-                    Object.values(contact).some(campo => !campo) ? (
+                    Object.values(contact).some(campo => !campo)
+                    || !validateEmail(contact.correo)
+                    || !validatePhone(contact.celular)
+                    ? (
                         <input
                             disabled
                             type="submit" value='Continuar'
@@ -38,7 +42,7 @@ const FormContact = ({ data, setData }) => {
             </form>
             {
                 Object.values(data.contact).every(campo => campo) && (
-                    <div>
+                    <div className='dataContact'>
                         <p>Correo electrónico: {contact.correo}</p>
                         <p>Teléfono celular: {contact.celular}</p>
                     </div>

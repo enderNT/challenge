@@ -1,5 +1,6 @@
 import React from 'react'
 import useFormName from '../../hooks/useFormName'
+import '../../styles/formName.css'
 
 const FormName = ({ data, setData }) => {
 
@@ -10,13 +11,13 @@ const FormName = ({ data, setData }) => {
 
 
     return (
-        <div>
+        <div className='formName'>
             <div>
                 <img src="www.google.com" alt="profile-pic" />
             </div>
 
             <form onSubmit={handleSubmit}>
-                <h3>¿Cual es tu nombre?</h3>
+                <h3>¿Cuál es tu nombre?</h3>
                 <input
                     name='nombre'
                     type="text" placeholder='Nombre'
@@ -49,7 +50,7 @@ const FormName = ({ data, setData }) => {
             </form>
             {
                 Object.values(data.name).every(campo => campo) && (
-                    <div>
+                    <div className='dataFullName'>
                         <p>{ dialog.join(' ') }</p>
                     </div>
                 )
@@ -57,5 +58,5 @@ const FormName = ({ data, setData }) => {
         </div>
     )
 }
-
+// En cuanto se llene el formulario debe desaparecer el boton
 export default FormName

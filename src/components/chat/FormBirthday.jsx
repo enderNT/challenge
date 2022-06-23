@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import useFormBirthday from '../../hooks/useFormBirthday'
+import '../../styles/formBirthday.css'
 
 const FormBirthday = ({ data, setData }) => {
 
     const {
         birthday, dialog, handleBirthday,
-        handleSubmit
+        handleSubmit, enumMes, currentYear
     } = useFormBirthday(data, setData)
 
     return (
-        <div>
+        <div className='formBirthday'>
             <div>
                 <img src="www.google.com" alt="profile-pic" />
             </div>
@@ -25,7 +26,7 @@ const FormBirthday = ({ data, setData }) => {
                     onChange={handleBirthday} />
                 <input
                     name='anio'
-                    type="number" placeholder='Año'
+                    type="text" placeholder='Año'
                     onChange={handleBirthday} />
                 {
                     Object.values(birthday).some(campo => !campo) ? (
@@ -36,13 +37,14 @@ const FormBirthday = ({ data, setData }) => {
                     ) : (
                         <input
                             type="submit" value='Continuar'
+                            disabled
                         />
                     )
                 }
             </form>
             {
                 Object.values(data.birthday).every(campo => campo) && (
-                    <div>
+                    <div className='dataBirthday'>
                         <p>{ dialog.join(' ') }</p>
                     </div>
                 )

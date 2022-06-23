@@ -24,7 +24,6 @@ const Chat = () => {
         }
     })
 
-
     return (
         <div className='chat'>
             <header className='chatHeader'>
@@ -69,14 +68,14 @@ const Chat = () => {
                     Object.values(data.name)
                     .concat(Object.values(data.birthday))
                     .concat(Object.values(data.contact)).every(campo => campo) && (
-                        <>
-                            <div>
+                        <div className='submitData'>
+                            <div className='confirmation'>
                                 <p>Si tus datos son correctos continuemos por favor</p>
                             </div>
-                            <div>
+                            <div className='buttonStart__container'>
                                 <button>Iniciar</button>
                             </div>
-                        </>
+                        </div>
                     )
                 }
             </footer>

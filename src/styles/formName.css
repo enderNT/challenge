@@ -1,0 +1,32 @@
+.formName {
+    display: flex;
+    width: 90%;
+    margin: 0 15%;
+    font-family: 'Roboto', sans-serif;
+    flex-wrap: wrap;
+}
+
+.formName > div > img {
+    margin-right: 10px;
+    margin-left: -10px;
+}
+
+.formName > form {
+    background-color: rgb(214, 214, 214);
+    width: 60%;
+    padding: 15px;
+}
+
+form > input {
+    width: 90%;
+    background: none;
+    border: 1px solid gray;
+    margin: 5px;
+}
+
+.formName > .dataFullName {
+    margin: 13% 0;
+    width: 95%;
+    text-align: center;
+    background-color: pink;
+}

@@ -1,13 +1,10 @@
 import { useState } from "react"
 
-
 const useFormContact = (data, handleData) => {
     const [contact, setContact] = useState({
         correo: '',
         celular: 0,
     })
-
-    const [dialog, setDialog] = useState([])
 
     const handleContact = (event) => {
         if (event.target.name === 'celular') {
@@ -22,6 +19,20 @@ const useFormContact = (data, handleData) => {
         })
     }
 
+    const validateEmail = (email) => {
+        return email
+            .match(
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                )
+    }
+
+    const validatePhone = (phone) => {
+        return phone
+            .match(
+                /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+            )
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault()
         setDialog(Object.values(contact))
@@ -30,18 +41,10 @@ const useFormContact = (data, handleData) => {
             contact
         })
     }
-    // const handleSubmit = (event) => {
-    //     event.preventDefault()
-    //     setDialog(Object.values(contact))
-    //     setData({
-    //         ...data,
-    //         contact
-    //     })
-    // }
 
     return {
-        handleSubmit, handleContact, dialog,
-        contact
+        handleSubmit, handleContact,
+        contact, validateEmail, validatePhone
     }
 }
 
