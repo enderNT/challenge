@@ -11,7 +11,7 @@ const FormContact = ({ data, setData }) => {
 
     return (
         <div className='formContact'>
-            <div>
+            <div className='profile-picContainer'>
                 <img src="www.google.com" alt="profile-pic" />
             </div>
             <form onSubmit={handleSubmit}>

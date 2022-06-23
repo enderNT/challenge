@@ -12,8 +12,11 @@ const FormName = ({ data, setData }) => {
 
     return (
         <div className='formName'>
-            <div>
-                <img src="www.google.com" alt="profile-pic" />
+            <div className='profile-picContainer'>
+                <img
+                    src="https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg"
+                    alt="profile-pic"
+                />
             </div>
 
             <form onSubmit={handleSubmit}>
